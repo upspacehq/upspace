@@ -4,6 +4,7 @@ import Layout from '../../components/layout/Layout';
 import SEO from '../../components/seo/SEO';
 import { getAllPosts, getPostBySlug } from '../../data/posts';
 import styles from '../../styles/PostContent.module.css';
+import ReactMarkdown from 'react-markdown'; // ✅ Added Markdown renderer
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -67,8 +68,9 @@ export default function Post({ post }) {
             />
           </header>
 
+          {/* ✅ Render Markdown content instead of plain <p> */}
           <div className={styles.content}>
-            <p>{post.content}</p>
+            <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
 
           <div className={styles.tags}>

@@ -1,10 +1,11 @@
-export const posts = [
+// Local mock data (useful for dev or fallback)
+export const localPosts = [
   {
     id: 1,
     slug: "future-of-artificial-intelligence",
     title: "The Future of Artificial Intelligence in 2025",
-    excerpt: "Exploring how AI is transforming industries and what to expect in the coming years. From automation to creative applications.",
-    content: "Artificial Intelligence has come a long way in recent years. In 2025, we're seeing unprecedented advances in machine learning, natural language processing, and computer vision. This article explores the latest trends and what they mean for businesses and society. From GPT-4 to autonomous vehicles, AI is reshaping every industry. Companies are leveraging AI for customer service, data analysis, and creative tasks. The implications are profound and far-reaching.",
+    excerpt: "Exploring how AI is transforming industries and what to expect in the coming years...",
+    content: "Artificial Intelligence has come a long way in recent years...",
     category: "Technology",
     author: "John Doe",
     authorImage: "/images/authors/john-doe.jpg",
@@ -17,8 +18,8 @@ export const posts = [
     id: 2,
     slug: "startup-funding-guide-2025",
     title: "Complete Guide to Startup Funding in 2025",
-    excerpt: "Everything you need to know about raising capital for your startup, from seed rounds to Series A and beyond.",
-    content: "Raising funding for a startup in 2025 requires a strategic approach. This comprehensive guide covers everything from preparing your pitch deck to negotiating term sheets. We'll explore the different funding stages, what investors look for, and common mistakes to avoid. Whether you're bootstrapping or seeking venture capital, this guide has you covered.",
+    excerpt: "Everything you need to know about raising capital for your startup...",
+    content: "Raising funding for a startup in 2025 requires a strategic approach...",
     category: "Business",
     author: "Jane Smith",
     authorImage: "/images/authors/jane-smith.jpg",
@@ -31,29 +32,52 @@ export const posts = [
 ];
 
 /**
- * Get all posts
+ * Fetch posts from CMS API (Vercel, Contentful, Sanity, etc.)
+ * Replace `process.env.CMS_API_URL` with your actual API endpoint.
  */
-export function getAllPosts() {
-  return posts;
+export async function fetchPostsFromCMS() {
+  try {
+    const res = await fetch(process.env.CMS_API_URL);
+    if (!res.ok) throw new Error("Failed to fetch posts from CMS");
+    const data = await res.json();
+    return data.posts || [];
+  } catch (error) {
+    console.error("CMS fetch error:", error);
+    // Fallback to local mock data
+    return localPosts;
+  }
+}
+
+/**
+ * Get all posts (CMS first, fallback to local)
+ */
+export async function getAllPosts() {
+  const posts = await fetchPostsFromCMS();
+  return posts.length ? posts : localPosts;
 }
 
 /**
  * Get a single post by slug
  */
-export function getPostBySlug(slug) {
+export async function getPostBySlug(slug) {
+  const posts = await getAllPosts();
   return posts.find((post) => post.slug === slug);
 }
 
 /**
  * Get featured posts (e.g., latest 3)
  */
-export function getFeaturedPosts(limit = 3) {
+export async function getFeaturedPosts(limit = 3) {
+  const posts = await getAllPosts();
   return posts.slice(0, limit);
 }
 
 /**
  * Get posts by category
  */
-export function getPostsByCategory(category) {
-  return posts.filter((post) => post.category.toLowerCase() === category.toLowerCase());
+export async function getPostsByCategory(category) {
+  const posts = await getAllPosts();
+  return posts.filter(
+    (post) => post.category.toLowerCase() === category.toLowerCase()
+  );
 }

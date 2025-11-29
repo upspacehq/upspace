@@ -27,74 +27,33 @@ export const posts = [
     readTime: 8,
     tags: ["Startups", "Funding", "Business"]
   },
-  {
-    id: 3,
-    slug: "remote-work-best-practices",
-    title: "Remote Work Best Practices for 2025",
-    excerpt: "Master the art of remote work with these proven strategies for productivity and work-life balance.",
-    content: "Remote work is here to stay. This article shares the best practices successful remote workers use to stay productive, maintain work-life balance, and advance their careers. From setting up your home office to effective communication strategies, we cover it all.",
-    category: "Business",
-    author: "Mike Johnson",
-    authorImage: "/images/authors/mike-johnson.jpg",
-    coverImage: "/images/posts/remote-work.jpg",
-    date: "2025-01-08",
-    readTime: 6,
-    tags: ["Remote Work", "Productivity", "Career"]
-  },
-  {
-    id: 4,
-    slug: "web3-blockchain-explained",
-    title: "Web3 and Blockchain: A Beginner's Guide",
-    excerpt: "Demystifying Web3, blockchain technology, and what they mean for the future of the internet.",
-    content: "Web3 represents the next evolution of the internet, built on blockchain technology and decentralization. This beginner-friendly guide explains the core concepts, use cases, and potential impact on industries from finance to entertainment.",
-    category: "Technology",
-    author: "Sarah Williams",
-    authorImage: "/images/authors/sarah-williams.jpg",
-    coverImage: "/images/posts/web3-blockchain.jpg",
-    date: "2025-01-05",
-    readTime: 7,
-    tags: ["Web3", "Blockchain", "Crypto"]
-  },
-  {
-    id: 5,
-    slug: "sustainable-business-practices",
-    title: "Building a Sustainable Business in 2025",
-    excerpt: "How modern companies are balancing profitability with environmental and social responsibility.",
-    content: "Sustainability is no longer optional for businesses. Consumers and investors increasingly demand that companies operate responsibly. This article explores practical strategies for building a sustainable business model that benefits both your bottom line and the planet.",
-    category: "Business",
-    author: "David Chen",
-    authorImage: "/images/authors/david-chen.jpg",
-    coverImage: "/images/posts/sustainable-business.jpg",
-    date: "2025-01-03",
-    readTime: 6,
-    tags: ["Sustainability", "ESG", "Business Strategy"]
-  },
-  {
-    id: 6,
-    slug: "cybersecurity-essentials-2025",
-    title: "Cybersecurity Essentials Every Business Needs",
-    excerpt: "Protect your business from cyber threats with these essential security practices and tools.",
-    content: "Cybersecurity threats are evolving rapidly. This guide covers the essential security measures every business should implement, from employee training to advanced threat detection systems. Learn how to protect your data and your customers.",
-    category: "Technology",
-    author: "Emily Rodriguez",
-    authorImage: "/images/authors/emily-rodriguez.jpg",
-    coverImage: "/images/posts/cybersecurity.jpg",
-    date: "2025-01-01",
-    readTime: 9,
-    tags: ["Cybersecurity", "Security", "IT"]
-  },
-  {
-    id: 7,
-    slug: "product-market-fit-guide",
-    title: "Finding Product-Market Fit: A Practical Framework",
-    excerpt: "A step-by-step guide to validating your product idea and achieving product-market fit.",
-    content: "Product-market fit is the holy grail for startups. This practical framework guides you through the process of validating your idea, finding your target market, and iterating until you achieve true PMF. Learn from real examples and avoid common pitfalls.",
-    category: "Startups",
-    author: "Alex Turner",
-    authorImage: "/images/authors/alex-turner.jpg",
-    coverImage: "/images/posts/product-market-fit.jpg",
-    date: "2024-12-28",
-    readTime: 10,
-    tags: ["Product", "Startups", "Growth"]
-  }
+  // ... keep the rest of your posts unchanged
 ];
+
+/**
+ * Get all posts
+ */
+export function getAllPosts() {
+  return posts;
+}
+
+/**
+ * Get a single post by slug
+ */
+export function getPostBySlug(slug) {
+  return posts.find((post) => post.slug === slug);
+}
+
+/**
+ * Get featured posts (e.g., latest 3)
+ */
+export function getFeaturedPosts(limit = 3) {
+  return posts.slice(0, limit);
+}
+
+/**
+ * Get posts by category
+ */
+export function getPostsByCategory(category) {
+  return posts.filter((post) => post.category.toLowerCase() === category.toLowerCase());
+}

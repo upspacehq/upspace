@@ -1,26 +1,24 @@
 // pages/api/posts/[slug].js
-import { localPosts } from '../../../data/posts';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   const { slug } = req.query;
+  const postsDir = path.join(process.cwd(), 'content/posts');
+  const filePath = path.join(postsDir, `${slug}.md`);
 
-  try {
-    // Try fetching from CMS API
-    const cmsRes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/posts/${slug}`);
-    if (!cmsRes.ok) throw new Error('CMS fetch failed');
-
-    const data = await cmsRes.json();
-    if (data.post) {
-      return res.status(200).json({ post: data.post });
-    }
-  } catch (error) {
-    console.error('CMS error (falling back to local):', error);
-    // Fallback to local mock data
-    const post = localPosts.find((p) => p.slug === slug);
-    if (post) {
-      return res.status(200).json({ post });
-    }
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: 'Post not found' });
   }
 
-  return res.status(404).json({ error: 'Post not found' });
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(fileContent);
+
+  res.status(200).json({
+    post: {
+      ...data,   // frontmatter fields
+      content,   // markdown body
+    },
+  });
 }

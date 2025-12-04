@@ -35,8 +35,8 @@ export default function Contact() {
   return (
     <Layout>
       <SEO 
-        title="Contact Us - UpSpace"
-        description="Get in touch with the UpSpace team. We'd love to hear from you."
+        title="Contact Us - UpSpaceX"
+        description="Get in touch with the UpSpaceX team. We'd love to hear from you."
       />
 
       <div className={styles.contact}>
@@ -52,15 +52,15 @@ export default function Contact() {
               <div className={styles.contactMethods}>
                 <div className={styles.method}>
                   <h3>📧 Email</h3>
-                  <p>hello@upspace.com</p>
+                  <p>hello@upspacex@outlook.com</p>
                 </div>
                 <div className={styles.method}>
                   <h3>💼 Business Inquiries</h3>
-                  <p>business@upspace.com</p>
+                  <p>business@upspacex@outlook.com</p>
                 </div>
                 <div className={styles.method}>
                   <h3>✍️ Write for Us</h3>
-                  <p>contributors@upspace.com</p>
+                  <p>contributors@upspacex@outlook.com</p>
                 </div>
               </div>
             </div>

@@ -6,18 +6,18 @@ export default function About() {
   return (
     <Layout>
       <SEO 
-        title="About UpSpace - Your Source for Tech & Business Insights"
-        description="Learn about UpSpace, our mission, and our team of writers."
+        title="About UpSpaceX - Your daily space for everything that matters"
+        description="Learn about UpSpaceX, our mission, and our team of writers."
       />
 
       <div className={styles.about}>
         <div className="container">
-          <h1>About UpSpace</h1>
+          <h1>About UpSpaceX</h1>
           
           <section className={styles.mission}>
             <h2>Our Mission</h2>
             <p>
-              UpSpace is dedicated to bringing you the latest insights in technology, 
+              UpSpaceX is dedicated to bringing you the latest insights in technology, 
               business, and innovation. We believe in empowering professionals and 
               entrepreneurs with knowledge that drives success.
             </p>
@@ -48,7 +48,7 @@ export default function About() {
           <section className={styles.team}>
             <h2>Our Team</h2>
             <p>
-              UpSpace is powered by a diverse team of writers, editors, and contributors 
+              UpSpaceX is powered by a diverse team of writers, editors, and contributors 
               who are passionate about technology and business. Our contributors include 
               industry veterans, startup founders, and thought leaders.
             </p>

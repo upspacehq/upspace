@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://upspace.com/sitemap.xml
+Sitemap: https://upspacex.com/sitemap.xml

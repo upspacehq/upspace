@@ -37,7 +37,7 @@ export default function Blog() {
   return (
     <Layout>
       <SEO 
-        title="Blog - UpSpace | Latest Technology & Business Insights"
+        title="Blog - UpSpaceX | Latest Technology & Business Insights"
         description="Read the latest articles on technology, business, innovation, and startups."
       />
 

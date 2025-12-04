@@ -9,7 +9,7 @@ export default function AuthorPage({ author, authorPosts }) {
   return (
     <Layout>
       <SEO 
-        title={`${author.name} - UpSpace`}
+        title={`${author.name} - UpSpaceX`}
         description={author.bio}
       />
 

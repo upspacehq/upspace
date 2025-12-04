@@ -26,7 +26,7 @@ export default function CategoryPage({ posts, category }) {
   return (
     <Layout>
       <SEO 
-        title={`${category} Articles - UpSpace`}
+        title={`${category} Articles - UpSpaceX`}
         description={`Read the latest articles about ${category}`}
       />
 

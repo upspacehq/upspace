@@ -5,7 +5,7 @@ const nextConfig = {
     // `images.domains` is deprecated. Use `remotePatterns` to explicitly
     // allow remote images and protect from malformed requests.
     remotePatterns: [
-      { protocol: 'https', hostname: 'upspace.vercel.app' },
+      { protocol: 'https', hostname: 'upspacex.vercel.app' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },

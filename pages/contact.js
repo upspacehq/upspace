@@ -39,9 +39,11 @@ export default function Contact() {
         description="Get in touch with the UpSpaceX team. We'd love to hear from you."
       />
 
-      <div className={styles.contact}>
+      {/* ✅ Apply section utility */}
+      <section className={`${styles.section} ${styles.contact}`}>
         <div className="container">
           <div className={styles.content}>
+            {/* ✅ Info Block */}
             <div className={styles.info}>
               <h1>Get in Touch</h1>
               <p>
@@ -65,6 +67,7 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* ✅ Contact Form */}
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Name</label>
@@ -128,7 +131,7 @@ export default function Contact() {
             </form>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }
